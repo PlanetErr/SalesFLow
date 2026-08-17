@@ -1,18 +1,59 @@
-# Salesforce DX Project: Next Steps
+# 🚀 SalesFlow — Salesforce Sales Automation
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+SalesFlow is a beginner-friendly Salesforce project built using **Apex, Triggers, SOQL, DML, Apex Tests, Reports, and Dashboards**.
 
-## How Do You Plan to Deploy Your Changes?
+The goal is to automate common sales activities and help sales teams identify opportunities that need attention.
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+## ✨ Features
 
-## Configure Your Salesforce DX Project
+1. Automatic Opportunity Follow-Up
+When an Opportunity moves to **Negotiation/Review**, Salesforce automatically creates a follow-up Task for the Opportunity owner.
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+ 2. At-Risk Opportunity Detection
+Open Opportunities with a Close Date within the next **7 days** are automatically marked as **At Risk**.
 
-## Read All About It
+3. Lead Qualification
+A Lead is automatically marked as **Qualified** when both **Email** and **Phone** are available.
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+4. Sales Dashboard
+A Salesforce dashboard provides:
+
+- Open Pipeline
+- At-Risk Opportunities
+- Qualified Leads
+- Pipeline by Stage
+
+  Architecture
+
+
+Salesforce Record
+       ↓
+     Trigger
+       ↓
+  Apex Handler
+       ↓
+ Business Logic
+       ↓
+Updated Salesforce Data
+       ↓
+Reports & Dashboard
+
+*Project Structure
+salesflow/
+│
+├── force-app/
+│   └── main/
+│       └── default/
+│           ├── classes/
+│           │   ├── LeadTriggerHandler.cls
+│           │   ├── LeadTriggerHandlerTest.cls
+│           │   ├── OpportunityTriggerHandler.cls
+│           │   └── OpportunityTriggerHandlerTest.cls
+│           │
+│           └── triggers/
+│               ├── LeadTrigger.trigger
+│               └── OpportunityTrigger.trigger
+│
+├── sfdx-project.json
+├── .gitignore
+└── README.md
